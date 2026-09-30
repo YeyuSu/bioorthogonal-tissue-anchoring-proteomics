@@ -10,6 +10,7 @@ from pathlib import Path
 
 from scripts.core.run_proteomics_workflow import run_workflow
 from scripts.core.validate_proteomics_output import validate_output
+from scripts.publication.build_publication_tables import build_publication_tables
 
 EXPECTED_INPUT_SHA256 = "e36e4530191f46c37b1756d2563ef7200dbed870f8fa6121df37d34057ea3fb1"
 
@@ -43,6 +44,8 @@ def run_reproduction(root: Path, output: Path) -> Path:
 
     run_workflow(input_path, config_path, output)
     failures = validate_output(output)
+    if not failures:
+        build_publication_tables(output, output / "publication_tables")
     report = {
         "passed": not failures,
         "input_sha256": observed_hash,
