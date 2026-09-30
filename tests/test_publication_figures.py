@@ -61,6 +61,19 @@ class PublicationFigureTests(unittest.TestCase):
             self.assertNotIn("NHS_vs_NCS", path.name)
             self.assertNotIn('id="Arial', svg)
 
+    def test_svg_generation_is_byte_deterministic(self):
+        second = self.root / "publication_figures_second"
+        render_publication_figures(self.core, self.tables, second)
+        first_files = sorted(path.relative_to(self.figures) for path in self.figures.rglob("*.svg"))
+        second_files = sorted(path.relative_to(second) for path in second.rglob("*.svg"))
+        self.assertEqual(first_files, second_files)
+        for relative in first_files:
+            self.assertEqual(
+                (self.figures / relative).read_bytes(),
+                (second / relative).read_bytes(),
+                relative.as_posix(),
+            )
+
     def test_heatmap_has_six_columns_exact_stars_and_missing_dash(self):
         heatmap = self.figures / "three_tissue_treatment_effect_heatmap.svg"
         self.assertTrue(heatmap.is_file())

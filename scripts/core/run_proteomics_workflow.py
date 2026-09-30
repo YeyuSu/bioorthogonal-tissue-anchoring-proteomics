@@ -345,6 +345,7 @@ def render_volcano(
         "figure.facecolor": "white",
         "savefig.facecolor": "white",
         "svg.fonttype": "none",
+        "svg.hashsalt": "bioorthogonal-tissue-anchoring",
     }
     with plt.rc_context(rc):
         fig, ax = plt.subplots(figsize=(width_mm / 25.4, height_mm / 25.4))
@@ -411,7 +412,7 @@ def render_volcano(
             )
 
         path = output / f"Volcano_{_safe_filename(contrast['name'])}.svg"
-        fig.savefig(path)
+        fig.savefig(path, metadata={"Date": None})
         plt.close(fig)
     _write_svg_size(path, width_mm, height_mm)
     return path

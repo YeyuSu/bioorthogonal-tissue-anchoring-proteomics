@@ -29,6 +29,7 @@ def _render_heatmap(tables_dir: Path, destination: Path) -> Path:
 
     matplotlib.rcParams["font.family"] = "Arial"
     matplotlib.rcParams["svg.fonttype"] = "none"
+    matplotlib.rcParams["svg.hashsalt"] = "bioorthogonal-tissue-anchoring"
     height_mm = max(45.0, 12.0 + 7.0 * max(len(keys), 1))
     fig, ax = plt.subplots(figsize=(120.0 / MM_PER_INCH, height_mm / MM_PER_INCH))
     masked = np.ma.masked_invalid(values)
@@ -56,7 +57,9 @@ def _render_heatmap(tables_dir: Path, destination: Path) -> Path:
     ax.set_ylabel("Protein", fontsize=7)
     fig.tight_layout()
     destination.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(destination, format="svg", bbox_inches="tight")
+    fig.savefig(
+        destination, format="svg", bbox_inches="tight", metadata={"Date": None}
+    )
     plt.close(fig)
     return destination
 
