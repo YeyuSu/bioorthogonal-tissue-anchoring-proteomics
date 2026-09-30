@@ -2,7 +2,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.validate_release import audit_repository
+from scripts.validate_release import (
+    audit_repository,
+    verify_license_coverage,
+    verify_reference_hashes,
+)
 
 
 class ReleaseScopeTests(unittest.TestCase):
@@ -32,13 +36,14 @@ class ReleaseScopeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             (root / "scripts").mkdir()
+            machine_path = "/" + "Users" + "/" + "syysmac"
             (root / "scripts" / "example.py").write_text(
-                'INPUT = "/Users/syysmac/Documents/input.tsv"\n', encoding="utf-8"
+                f'INPUT = "{machine_path}/Documents/input.tsv"\n', encoding="utf-8"
             )
 
             errors = audit_repository(root)
 
-            self.assertTrue(any("/Users/syysmac" in error for error in errors))
+            self.assertTrue(any(machine_path in error for error in errors))
 
     def test_readme_may_state_that_b16f10_is_excluded(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -48,6 +53,35 @@ class ReleaseScopeTests(unittest.TestCase):
             )
 
             self.assertEqual(audit_repository(root), [])
+
+
+class ReleaseDocumentationTests(unittest.TestCase):
+    def test_reference_hashes_match_frozen_release(self):
+        root = Path(__file__).resolve().parents[1]
+        self.assertEqual(verify_reference_hashes(root), [])
+
+    def test_license_coverage_is_explicit(self):
+        root = Path(__file__).resolve().parents[1]
+        self.assertEqual(verify_license_coverage(root), [])
+        self.assertIn("MIT License", (root / "LICENSE-CODE").read_text(encoding="utf-8"))
+        data_license = (root / "LICENSE-DATA").read_text(encoding="utf-8")
+        self.assertIn("CC BY 4.0", data_license)
+        self.assertIn("https://creativecommons.org/licenses/by/4.0/", data_license)
+
+    def test_readme_documents_reproduction_and_statistical_limits(self):
+        root = Path(__file__).resolve().parents[1]
+        readme = (root / "README.md").read_text(encoding="utf-8")
+        for required in [
+            "python reproduce.py",
+            "27 mice",
+            "mouse 17",
+            "Welch",
+            "Benjamini–Hochberg",
+            "streptavidin",
+            "results/reference",
+            "B16F10 data are not included",
+        ]:
+            self.assertIn(required, readme)
 
 
 if __name__ == "__main__":
