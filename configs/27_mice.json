@@ -1,0 +1,262 @@
+{
+  "preset_name": "27-mice-three-tissue-anchoring",
+  "columns": {
+    "protein_id": "PG.ProteinAccessions",
+    "description": "PG.ProteinDescriptions",
+    "protein_name": "PG.ProteinNames",
+    "description_separator": ";"
+  },
+  "samples": [
+    {
+      "sample_id": "1",
+      "column": "[1] 20260621_1.raw.PG.Quantity",
+      "tissue": "subcutaneous",
+      "treatment": "biotin"
+    },
+    {
+      "sample_id": "2",
+      "column": "[2] 20260621_2.raw.PG.Quantity",
+      "tissue": "subcutaneous",
+      "treatment": "biotin"
+    },
+    {
+      "sample_id": "3",
+      "column": "[3] 20260621_3.raw.PG.Quantity",
+      "tissue": "subcutaneous",
+      "treatment": "biotin"
+    },
+    {
+      "sample_id": "4",
+      "column": "[4] 20260621_4.raw.PG.Quantity",
+      "tissue": "subcutaneous",
+      "treatment": "NHS"
+    },
+    {
+      "sample_id": "5",
+      "column": "[5] 20260621_5.raw.PG.Quantity",
+      "tissue": "subcutaneous",
+      "treatment": "NHS"
+    },
+    {
+      "sample_id": "6",
+      "column": "[6] 20260621_6.raw.PG.Quantity",
+      "tissue": "subcutaneous",
+      "treatment": "NHS"
+    },
+    {
+      "sample_id": "7",
+      "column": "[7] 20260621_7.raw.PG.Quantity",
+      "tissue": "subcutaneous",
+      "treatment": "NCS"
+    },
+    {
+      "sample_id": "8",
+      "column": "[8] 20260621_8.raw.PG.Quantity",
+      "tissue": "subcutaneous",
+      "treatment": "NCS"
+    },
+    {
+      "sample_id": "9",
+      "column": "[9] 20260621_9.raw.PG.Quantity",
+      "tissue": "subcutaneous",
+      "treatment": "NCS"
+    },
+    {
+      "sample_id": "10",
+      "column": "[10] 20260621_10.raw.PG.Quantity",
+      "tissue": "muscle",
+      "treatment": "biotin"
+    },
+    {
+      "sample_id": "11",
+      "column": "[11] 20260621_11.raw.PG.Quantity",
+      "tissue": "muscle",
+      "treatment": "biotin"
+    },
+    {
+      "sample_id": "12",
+      "column": "[12] 20260621_12.raw.PG.Quantity",
+      "tissue": "muscle",
+      "treatment": "biotin"
+    },
+    {
+      "sample_id": "13",
+      "column": "[13] 20260621_13.raw.PG.Quantity",
+      "tissue": "muscle",
+      "treatment": "NHS"
+    },
+    {
+      "sample_id": "14",
+      "column": "[14] 20260621_14.raw.PG.Quantity",
+      "tissue": "muscle",
+      "treatment": "NHS"
+    },
+    {
+      "sample_id": "15",
+      "column": "[15] 20260621_15.raw.PG.Quantity",
+      "tissue": "muscle",
+      "treatment": "NHS"
+    },
+    {
+      "sample_id": "16",
+      "column": "[16] 20260621_16.raw.PG.Quantity",
+      "tissue": "muscle",
+      "treatment": "NCS"
+    },
+    {
+      "sample_id": "17",
+      "column": "[17] 20260621_17.raw.PG.Quantity",
+      "tissue": "muscle",
+      "treatment": "NCS"
+    },
+    {
+      "sample_id": "18",
+      "column": "[18] 20260621_18.raw.PG.Quantity",
+      "tissue": "muscle",
+      "treatment": "NCS"
+    },
+    {
+      "sample_id": "19",
+      "column": "[19] 20260621_19.raw.PG.Quantity",
+      "tissue": "periodontal",
+      "treatment": "biotin"
+    },
+    {
+      "sample_id": "20",
+      "column": "[20] 20260621_20.raw.PG.Quantity",
+      "tissue": "periodontal",
+      "treatment": "biotin"
+    },
+    {
+      "sample_id": "21",
+      "column": "[21] 20260621_21.raw.PG.Quantity",
+      "tissue": "periodontal",
+      "treatment": "biotin"
+    },
+    {
+      "sample_id": "22",
+      "column": "[22] 20260621_22.raw.PG.Quantity",
+      "tissue": "periodontal",
+      "treatment": "NHS"
+    },
+    {
+      "sample_id": "23",
+      "column": "[23] 20260621_23.raw.PG.Quantity",
+      "tissue": "periodontal",
+      "treatment": "NHS"
+    },
+    {
+      "sample_id": "24",
+      "column": "[24] 20260621_24.raw.PG.Quantity",
+      "tissue": "periodontal",
+      "treatment": "NHS"
+    },
+    {
+      "sample_id": "25",
+      "column": "[25] 20260621_25.raw.PG.Quantity",
+      "tissue": "periodontal",
+      "treatment": "NCS"
+    },
+    {
+      "sample_id": "26",
+      "column": "[26] 20260621_26.raw.PG.Quantity",
+      "tissue": "periodontal",
+      "treatment": "NCS"
+    },
+    {
+      "sample_id": "27",
+      "column": "[27] 20260621_27.raw.PG.Quantity",
+      "tissue": "periodontal",
+      "treatment": "NCS"
+    }
+  ],
+  "contrasts": [
+    {
+      "name": "subcutaneous_NHS_vs_biotin",
+      "title": "Subcutaneous\\nimiHTz-NHS vs biotin",
+      "tissue": "subcutaneous",
+      "treated": "NHS",
+      "control": "biotin"
+    },
+    {
+      "name": "subcutaneous_NCS_vs_biotin",
+      "title": "Subcutaneous\\nimiHTz-NCS vs biotin",
+      "tissue": "subcutaneous",
+      "treated": "NCS",
+      "control": "biotin"
+    },
+    {
+      "name": "muscle_NHS_vs_biotin",
+      "title": "Muscle\\nimiHTz-NHS vs biotin",
+      "tissue": "muscle",
+      "treated": "NHS",
+      "control": "biotin"
+    },
+    {
+      "name": "muscle_NCS_vs_biotin",
+      "title": "Muscle\\nimiHTz-NCS vs biotin",
+      "tissue": "muscle",
+      "treated": "NCS",
+      "control": "biotin"
+    },
+    {
+      "name": "periodontal_NHS_vs_biotin",
+      "title": "Periodontal\\nimiHTz-NHS vs biotin",
+      "tissue": "periodontal",
+      "treated": "NHS",
+      "control": "biotin"
+    },
+    {
+      "name": "periodontal_NCS_vs_biotin",
+      "title": "Periodontal\\nimiHTz-NCS vs biotin",
+      "tissue": "periodontal",
+      "treated": "NCS",
+      "control": "biotin"
+    }
+  ],
+  "normalization": {
+    "reference_match_column": "PG.ProteinAccessions",
+    "reference_match_value": "CON__Streptavidin"
+  },
+  "analysis": {
+    "contaminant_prefixes": [
+      "CON__"
+    ],
+    "minimum_detections_per_group": 2,
+    "exclude_samples": [
+      "17"
+    ],
+    "absolute_log2fc_threshold": 1.0,
+    "bh_adjusted_p_threshold": 0.05
+  },
+  "sensitivity": {
+    "restore_excluded_samples": true
+  },
+  "plot": {
+    "width_mm": 44,
+    "height_mm": 38,
+    "tick_font_pt": 5,
+    "axis_label_font_pt": 6,
+    "protein_label_font_pt": 5,
+    "title_font_pt": 6,
+    "font_family": "Arial",
+    "x_limits": [
+      -10,
+      10
+    ],
+    "x_tick_step": 5,
+    "absolute_log2fc_threshold": 1.0,
+    "neutral_point_size": 8,
+    "significant_point_size": 22,
+    "colors": {
+      "neutral": "#a9afb4",
+      "enriched": "#c83f3b",
+      "depleted": "#2878b5"
+    },
+    "label_replacements": {
+      "BPI fold containing family A, member 2 (Fragment)": "BPIFA2",
+      "Protein disulfide-isomerase A3": "PDIA3",
+      "Carboxylesterase 1C": "CES1C"
+    }
+  }
+}
