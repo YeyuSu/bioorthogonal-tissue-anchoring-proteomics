@@ -1,0 +1,50 @@
+protein_key,subcutaneous_NHS_vs_biotin,subcutaneous_NCS_vs_biotin,muscle_NHS_vs_biotin,muscle_NCS_vs_biotin,periodontal_NHS_vs_biotin,periodontal_NCS_vs_biotin
+A0A0R4J0Z1;P08003|Protein disulfide-isomerase A4,False,False,False,False,False,True
+A0A0R4J139|Peptide-methionine (R)-S-oxide reductase,False,False,False,True,False,False
+A0A2C9F2D2;Q07076|Annexin,False,False,True,False,False,False
+A2A9P6;P24788|Cyclin dependent kinase 11B,False,True,False,False,False,False
+A2AEP0;A2BHD2|Odorant-binding protein 1b,False,False,False,False,False,True
+A2AKU9;Q8C2Q8;Q91VR2|ATP synthase subunit gamma,False,False,False,False,True,False
+A2BHR0|Odorant binding protein 2B,False,False,False,False,False,True
+B1AQA7;B1AQB0;B1AQB1;B1AQB2;Q9D7P3|Keratin associated protein 4-22,False,True,False,False,False,False
+"B7ZCG3;P07743|BPI fold containing family A, member 2 (Fragment)",False,False,False,False,True,True
+"B7ZNH7|Collagen, type XIV, alpha 1",True,False,False,False,False,False
+B9EK12;Q925H4|Keratin associated protein 16-7,False,True,False,False,False,False
+E9Q328|RIKEN cDNA 5430401F13 gene,False,False,False,False,True,True
+F6URP1|Predicted gene 6619,False,False,False,False,True,True
+F6V6T4;Q9R0Q3|Transmembrane p24 trafficking protein 2 (Fragment),True,False,False,False,False,False
+F7CC56;F7CCJ3;Q9ESK9|RB1-inducible coiled-coil 1 (Fragment),False,False,False,True,False,False
+K3W4Q8;P18572|Basigin,False,False,True,False,False,False
+O08640|Keratin-associated protein 14,False,True,False,False,False,False
+O09048;Q925H3|Glycine tyrosine-rich hair keratin protein,False,True,False,False,False,False
+P01887|Beta-2-microglobulin,False,False,True,True,False,False
+P07724|Albumin,True,True,True,True,False,False
+P13541|Myosin-3,False,False,False,False,True,False
+P23953|Carboxylesterase 1C,False,True,False,False,False,False
+P28653|Biglycan,True,False,False,False,False,False
+P28654|Decorin,True,False,True,True,False,False
+"P29758|Ornithine aminotransferase, mitochondrial",False,False,False,False,True,True
+"P35486|Pyruvate dehydrogenase E1 component subunit alpha, somatic form, mitochondrial",False,False,False,True,False,False
+P46412|Glutathione peroxidase 3,True,True,False,False,False,False
+P50608|Fibromodulin,False,False,True,False,False,False
+P51885|Lumican,True,False,False,False,False,False
+P57787|Monocarboxylate transporter 4,False,False,True,False,False,False
+P60202|Myelin proteolipid protein,False,False,False,False,False,True
+P68372|Tubulin beta-4B chain,False,False,False,False,True,False
+Q00623|Apolipoprotein A-I,False,True,False,False,False,False
+Q04857|Collagen alpha-1(VI) chain,False,False,True,False,False,False
+"Q07417|Short-chain specific acyl-CoA dehydrogenase, mitochondrial",False,False,False,True,False,False
+Q61554|Fibrillin-1,False,False,True,False,False,False
+Q62000|Mimecan,True,False,False,False,False,False
+Q62009|Periostin,True,False,False,False,False,False
+"Q8BMF4|Dihydrolipoyllysine-residue acetyltransferase component of pyruvate dehydrogenase complex, mitochondrial",False,False,False,True,False,False
+"Q8BMS1|Trifunctional enzyme subunit alpha, mitochondrial",False,False,False,True,False,False
+Q8VEM8|Solute carrier family 25 member 3,False,False,False,False,True,False
+Q925H6|Keratin-associated protein 19-3,False,True,False,False,False,False
+Q99MQ4|Asporin,True,False,False,False,False,False
+Q9CR62|Mitochondrial 2-oxoglutarate/malate carrier protein,False,False,False,False,True,False
+Q9D023|Mitochondrial pyruvate carrier 2,False,False,False,False,False,True
+Q9D8N0|Elongation factor 1-gamma,False,False,False,True,False,False
+Q9ERD7|Tubulin beta-3 chain,False,False,False,False,True,False
+"Q9WUM5|Succinate--CoA ligase [ADP/GDP-forming] subunit alpha, mitochondrial",False,False,False,False,False,True
+Q9Z1T2|Thrombospondin-4,False,False,True,False,False,False

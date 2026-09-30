@@ -6,6 +6,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import sys
+import xml.etree.ElementTree as ET
+from importlib import metadata
 from pathlib import Path
 
 from scripts.core.run_proteomics_workflow import run_workflow
@@ -22,6 +25,24 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _package_version(name: str) -> str:
+    try:
+        return metadata.version(name)
+    except metadata.PackageNotFoundError:
+        return "not installed"
+
+
+def _svg_spec(path: Path) -> dict:
+    root = ET.parse(path).getroot()
+    svg = path.read_text(encoding="utf-8")
+    return {
+        "file": path.name,
+        "width": root.attrib.get("width"),
+        "height": root.attrib.get("height"),
+        "editable_arial_text": "<text" in svg and "Arial" in svg,
+    }
 
 
 def run_reproduction(root: Path, output: Path) -> Path:
@@ -45,15 +66,45 @@ def run_reproduction(root: Path, output: Path) -> Path:
 
     run_workflow(input_path, config_path, output)
     failures = validate_output(output)
+    figure_paths: list[Path] = []
     if not failures:
         publication_tables = output / "publication_tables"
         build_publication_tables(output, publication_tables)
-        render_publication_figures(
+        figure_paths = render_publication_figures(
             output, publication_tables, output / "publication_figures"
         )
+
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    volcano_specs = [_svg_spec(path) for path in figure_paths if "Volcano_" in path.name]
+    for spec in volcano_specs:
+        if spec["width"] != "44mm" or spec["height"] != "38mm":
+            failures.append(f"Incorrect volcano dimensions: {spec['file']}")
+        if not spec["editable_arial_text"]:
+            failures.append(f"Volcano lacks editable Arial text: {spec['file']}")
+    if not failures and len(volcano_specs) != 6:
+        failures.append(f"Expected 6 publication volcano SVGs, found {len(volcano_specs)}")
+
+    package_names = [
+        "numpy", "pandas", "scipy", "statsmodels", "scikit-learn", "matplotlib"
+    ]
     report = {
         "passed": not failures,
         "input_sha256": observed_hash,
+        "python": sys.version,
+        "packages": {name: _package_version(name) for name in package_names},
+        "contrasts": [item["name"] for item in config["contrasts"]],
+        "primary_excluded_samples": [
+            str(value) for value in config["analysis"].get("exclude_samples", [])
+        ],
+        "sensitivity_restored_samples": (
+            [str(value) for value in config["analysis"].get("exclude_samples", [])]
+            if config.get("sensitivity", {}).get("restore_excluded_samples", False)
+            else []
+        ),
+        "volcano_svgs": volcano_specs,
+        "heatmap_svg": next(
+            (path.name for path in figure_paths if "heatmap" in path.name), None
+        ),
         "failures": failures,
     }
     (output / "validation_report.json").write_text(

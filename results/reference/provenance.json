@@ -1,0 +1,33 @@
+{
+  "created_utc": "2026-09-30T04:25:29.818185+00:00",
+  "input_path": "data/27_mice_protein_groups.tsv",
+  "input_sha256": "e36e4530191f46c37b1756d2563ef7200dbed870f8fa6121df37d34057ea3fb1",
+  "config_path": "configs/27_mice.json",
+  "config_sha256": "83a4297b3140f266e86f15826bef8c655c779aff0733c6213b9ae48e1671500b",
+  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "primary_excluded_samples": [
+    "17"
+  ],
+  "contrasts": [
+    "subcutaneous_NHS_vs_biotin",
+    "subcutaneous_NCS_vs_biotin",
+    "muscle_NHS_vs_biotin",
+    "muscle_NCS_vs_biotin",
+    "periodontal_NHS_vs_biotin",
+    "periodontal_NCS_vs_biotin"
+  ],
+  "generated_volcanoes": [
+    "Volcano_subcutaneous_NHS_vs_biotin.svg",
+    "Volcano_subcutaneous_NCS_vs_biotin.svg",
+    "Volcano_muscle_NHS_vs_biotin.svg",
+    "Volcano_muscle_NCS_vs_biotin.svg",
+    "Volcano_periodontal_NHS_vs_biotin.svg",
+    "Volcano_periodontal_NCS_vs_biotin.svg"
+  ]
+}
