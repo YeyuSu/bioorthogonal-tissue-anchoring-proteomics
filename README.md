@@ -14,11 +14,12 @@ periodontal experiment. B16F10 data are not included in this repository.
 
 The submitted reference analysis records Python 3.12.14 and the exact package
 versions in [`requirements.txt`](requirements.txt). These are the tested
-software versions for the archived result. A macOS, Linux, or Windows computer
-with a Python 3.12 installation and the listed packages can run this CPU-only
-workflow; **no GPU or other non-standard hardware is required**. The archived
-provenance does not record the operating-system version or hardware used for
-the reference run, so an OS-specific tested-version claim cannot be made.
+software versions for the archived result. The full reproduction and 22 tests
+were independently rerun on macOS 15.7.9 (Apple silicon, arm64) with Python
+3.12.13 and the same pinned packages. Linux and Windows have not been tested
+for this release. This is a CPU-only workflow; **no GPU or other non-standard
+hardware is required**. The archived provenance does not record the operating
+system or hardware used for the original reference run.
 
 ### Installation
 
@@ -31,9 +32,12 @@ python -m pip install -r requirements.txt
 python reproduce.py
 ```
 
-The `pip install` time has not been measured on a clean, normal desktop
-computer. It depends on package download speed and availability of wheels; no
-numerical estimate is claimed.
+On the macOS computer above, `python -m pip install -r requirements.txt` took
+15.92 seconds in a new Python 3.12 virtual environment with some wheels already
+cached. A separate new environment using `uv pip install -r requirements.txt`
+with an empty uv cache, including package downloads, took 58.55 seconds. These
+are observed wall times (`/usr/bin/time -p`), not guaranteed installation times;
+network and package cache conditions affect the result.
 
 ### Demo and expected output
 
@@ -48,8 +52,10 @@ overwrite a non-empty output directory.
 The included 27-mouse TSV is the real demo dataset. A successful run writes
 `output/validation_report.json` with `"passed": true`, core tables, six
 44 mm × 38 mm volcano SVGs, a heatmap, and publication audit tables. Compare
-these with `results/reference/`. The demo runtime on a normal desktop has not
-been measured in a clean installation, so no numerical estimate is claimed.
+these with `results/reference/`. On macOS 15.7.9 with Python 3.12.13, the demo
+took 18.56 seconds of wall time in a new environment, including initial
+Matplotlib font-cache creation. The generated validation report recorded
+`"passed": true` and six volcano SVGs.
 
 ### Using another dataset
 
