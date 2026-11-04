@@ -10,7 +10,19 @@ periodontal experiment. B16F10 data are not included in this repository.
 
 ## Quick reproduction
 
-Python 3.12 is the tested interpreter.
+### System requirements
+
+The submitted reference analysis records Python 3.12.14 and the exact package
+versions in [`requirements.txt`](requirements.txt). These are the tested
+software versions for the archived result. A macOS, Linux, or Windows computer
+with a Python 3.12 installation and the listed packages can run this CPU-only
+workflow; **no GPU or other non-standard hardware is required**. The archived
+provenance does not record the operating-system version or hardware used for
+the reference run, so an OS-specific tested-version claim cannot be made.
+
+### Installation
+
+From the repository root:
 
 ```bash
 python3 -m venv .venv
@@ -18,6 +30,12 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 python reproduce.py
 ```
+
+The `pip install` time has not been measured on a clean, normal desktop
+computer. It depends on package download speed and availability of wheels; no
+numerical estimate is claimed.
+
+### Demo and expected output
 
 The default command creates `output/`. To use another empty location:
 
@@ -27,6 +45,24 @@ python reproduce.py --output path/to/new-output
 
 The runner checks the input SHA256 before creating results and refuses to
 overwrite a non-empty output directory.
+The included 27-mouse TSV is the real demo dataset. A successful run writes
+`output/validation_report.json` with `"passed": true`, core tables, six
+44 mm × 38 mm volcano SVGs, a heatmap, and publication audit tables. Compare
+these with `results/reference/`. The demo runtime on a normal desktop has not
+been measured in a clean installation, so no numerical estimate is claimed.
+
+### Using another dataset
+
+This release entry point is intentionally tied to the included dataset: it
+checks the input file's SHA256 and reads the fixed sample and contrast mapping
+in `configs/27_mice.json`. Replacing the TSV alone will fail that integrity
+check. To adapt the analysis to new data, supply a protein-group quantity TSV
+with the same structure as `data/27_mice_protein_groups.tsv`, update the sample
+mapping, contrasts, and exclusions in the configuration, and change the
+input path and expected SHA256 in `reproduce.py`. Review the tissue-specific
+publication figure settings before interpreting generated plots. The new-data
+path is an adaptation of the source code; it has not been validated as a
+general-purpose interface.
 
 ## Data and experimental design
 
